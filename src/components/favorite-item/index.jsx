@@ -3,8 +3,8 @@ import "./style.css"
 
 
 const FavoriteItem = (props) => {
-   const {id, image, title} = props
-   console.log(props)
+   const {id, image, title,removeFavorites } = props
+
   
 
   return (
@@ -13,7 +13,7 @@ const FavoriteItem = (props) => {
         <img src={image} alt="image of recipe"/>
       </div>
       <p>{title}</p>
-      <button type='button' >Remove from favouites</button>
+      <button type='button' onClick={()=>removeFavorites(id)}>Remove from favouites</button>
     </div>
   )
 }

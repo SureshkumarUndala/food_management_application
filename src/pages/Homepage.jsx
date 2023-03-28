@@ -14,7 +14,9 @@ const Homepage = () => {
 
   //favourites data state
   const [favorites, setfavorites] = useState([])
+  
 
+  //sending getdatafromsearchComp fnction as a prop to search component
   const getdatafromsearchComp = (getdata) => {
     //keep loadingstate as true before calling api
     setloadingstate(true)
@@ -35,6 +37,9 @@ const Homepage = () => {
     getReceipes()
   }
   // console.log(loadingstate, receipes)
+
+
+  
 
   const addTofavourites = (getCurrentRecipe) => {
     let copyFavourites = [...favorites]
@@ -58,6 +63,16 @@ const Homepage = () => {
   //   setfavorites(ExtractFavoritesFromLocalStoragePageLoad)
   // },[])
   // console.log(favorites)
+  const removeFavorites = (id) =>{
+  
+   
+   const getFavItems=[...favorites]
+   const upadateItems =getFavItems.filter((item)=>{return(item.id !==id)})
+   localStorage.setItem("favorites", JSON.stringify(upadateItems)) // set localstorage with updateed items
+   setfavorites(upadateItems) //update favourite state
+
+  }
+
 
 
   return (
@@ -71,6 +86,7 @@ const Homepage = () => {
           {
             favorites && favorites.length >0 ?
             favorites.map(item => (<FavoriteItem
+              removeFavorites ={removeFavorites}
               id={item.id}
               image={item.image}
               title={item.title}

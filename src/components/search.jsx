@@ -5,6 +5,7 @@ const Search = (props) => {
   const [inputvalue, setinputvalue] = useState("")
  
   const {getdatafromsearchComp} = props
+
   
   const handlesubmit = (e) =>{
     e.preventDefault()
